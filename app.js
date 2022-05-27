@@ -11,6 +11,13 @@ const express = require('express')
 
 const app = express()
 
+const expressLayouts = require('express-ejs-layouts');
+const path = require('path');
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(expressLayouts);
+app.use(express.static(path.join(__dirname, 'public')));
+
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require('./config')(app)
 
